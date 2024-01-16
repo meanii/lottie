@@ -20,6 +20,20 @@ class LottiefileViewModel: ViewModel() {
 
     val repositories: MutableState<LottieFileRepositories> = _repository
 
+    fun setRepository(repository: LottieFileRepositories) {
+        _repository.value = repository
+    }
+
+    fun getRepository(): LottieFileRepositories {
+        return _repository.value
+    }
+
+    fun appendRepository(repository: LottieFileRepositories) {
+        _repository.value = LottieFileRepositories(
+            stocks = _repository.value.stocks + repository.stocks
+        )
+    }
+
     fun getLottieFiles() {
         val url = "https://raw.githubusercontent.com/meanii/lottiefilesdb/main/json/collections.json"
         val headers: HashMap<String, String> = HashMap()
