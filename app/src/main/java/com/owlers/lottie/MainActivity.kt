@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
@@ -91,9 +92,11 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     Scaffold(
-                        bottomBar = {
 
-                            NavigationBar {
+                        bottomBar = {
+                            NavigationBar (
+                                containerColor = MaterialTheme.colorScheme.primary,
+                            ) {
                                 items.forEachIndexed() { index, item ->
                                     NavigationBarItem(
                                         selected = selectedIndex == index,
@@ -120,7 +123,10 @@ class MainActivity : ComponentActivity() {
                         },
 
                         floatingActionButton = {
-                            FloatingActionButton(onClick = { /*TODO*/ }) {
+                            FloatingActionButton(
+                                onClick = { /*TODO*/ },
+                                containerColor = MaterialTheme.colorScheme.secondary,
+                            ) {
                                 Icon(Icons.Default.Add, contentDescription = "Add")
                             }
                         }
